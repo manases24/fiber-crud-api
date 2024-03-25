@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/mnsh5/fiber-crud-api/database"
@@ -17,4 +19,5 @@ func main() {
 		AllowHeaders: "Origin, Content-Type, Accept",
 		// AllowCredentials: true,
 	}))
+	log.Fatal(app.Listen(":3000"))
 }
