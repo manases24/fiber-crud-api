@@ -13,13 +13,14 @@ func main() {
 	database.ConnectDB()
 
 	app := fiber.New()
-	routes.SetupRoutes(app)
-
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "http://localhost:5173",
 		AllowMethods: "GET, POST, PUT, DELETE",
 		AllowHeaders: "Origin, Content-Type, Accept",
 		// AllowCredentials: true,
 	}))
+
+	routes.SetupRoutes(app)
+
 	log.Fatal(app.Listen(":3000"))
 }
