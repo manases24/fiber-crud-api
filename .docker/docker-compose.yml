@@ -8,7 +8,7 @@ services:
       - "5432:5432"
     environment:
       - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_PASSWORD=superman
       - POSTGRES_DB=${DB_NAME}
     volumes:
       - ./postgres:/var/lib/postgresql/data
