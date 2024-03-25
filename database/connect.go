@@ -12,7 +12,7 @@ func ConnectDB() {
 	p := config.Config("DB_PORT")
 	port, err := strconv.ParseUint(p, 10, 32)
 	if err != nil {
-		panic("Faild to porse database port")
+		panic("Faild to parse database port")
 	}
 
 	dsn := fmt.Sprintf("host=%s port=%d dbname=%s user=%s password=%s sslmode=require",
