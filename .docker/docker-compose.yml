@@ -13,7 +13,7 @@ services:
 
   pgAdmin:
     image: dpage/pgadmin4:7.6
-    container_name: pgAdmin-db
+    container_name: pgdb
     environment:
       - PGADMIN_DEFAULT_PASSWORD=superman
       - PGADMIN_DEFAULT_EMAIL=superman@google.com
