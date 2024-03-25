@@ -1,0 +1,29 @@
+version: "3"
+services:
+  db: 
+    image: postgres:15.4-alpine3.18
+    container_name: postgres-db
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=superman
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+
+  pgAdmin:
+    image: dpage/pgadmin4:7.6
+    container_name: pgAdmin-db
+    environment:
+      - PGADMIN_DEFAULT_PASSWORD=superman
+      - PGADMIN_DEFAULT_EMAIL=superman@google.com
+    ports:
+      - "8080:80"
+    # volumes:
+    #   - ./pgadmin:/var/lib/pgadmin
+    depends_on:
+      - db
+
+volumes:
+  postgres:
+    external: false
