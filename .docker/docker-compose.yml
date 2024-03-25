@@ -1,15 +1,15 @@
-version: "3"
+version: '3.7'
 services:
-  db: 
-    image: postgres:15.4-alpine3.18
-    container_name: postgres-db
+  postgres:
+    image: postgres:16-alpine3.19
+    container_name: task-db
     restart: always
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USER=${DB_USER}
-      - POSTGRES_PASSWORD=superman
-      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=USR_EM
+      - POSTGRES_PASSWORD=usr_em
+      - POSTGRES_DB=task
     volumes:
       - ./postgres:/var/lib/postgresql/data
 
@@ -21,11 +21,10 @@ services:
       - PGADMIN_DEFAULT_EMAIL=superman@google.com
     ports:
       - "8080:80"
-    # volumes:
-    #   - ./pgadmin:/var/lib/pgadmin
     depends_on:
-      - db
+      - postgres
 
 volumes:
   postgres:
     external: false
+

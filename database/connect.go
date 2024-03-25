@@ -18,7 +18,7 @@ func ConnectDB() {
 		panic("Failed to parse database port")
 	}
 
-	dsn := fmt.Sprintf("host=%s port=%d dbname=%s user=%s password=%s sslmode=require",
+	dsn := fmt.Sprintf("host=%s port=%d dbname=%s user=%s password=%s sslmode=disable",
 		config.Config("DB_HOST"),
 		port,
 		config.Config("DB_NAME"),
