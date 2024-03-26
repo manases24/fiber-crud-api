@@ -16,8 +16,13 @@ func TaskRoutes(app *fiber.App) {
 
 	// http://localhost:3000/api/v1/tasks
 	v1.Get("/tasks", handlers.GetTasks)
+
+	// http://localhost:3000/api/v1/task/5
 	v1.Get("/task/:id", handlers.GetTask)
 
 	// http://localhost:3000/api/v1/task
 	v1.Post("/task", handlers.CreateTask)
+
+	// http://localhost:3000/api/v1/task/5
+	v1.Put("/task/:id", handlers.EditTask)
 }

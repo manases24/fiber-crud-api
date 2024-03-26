@@ -32,3 +32,25 @@ func GetTask(c *fiber.Ctx) error {
 	db.Find(&task, id)
 	return c.JSON(task)
 }
+
+func EditTask(c *fiber.Ctx) error {
+	id := c.Params("id")
+	db := database.DB
+	var task models.Task
+
+	if err := db.First(&task, id).Error; err != nil {
+		return c.Status(404).JSON(err)
+	}
+
+	updateTask := new(models.Task)
+	if err := c.BodyParser(updateTask); err != nil {
+		return c.Status(400).JSON(err)
+	}
+
+	task.Title = updateTask.Title
+	task.Description = updateTask.Description
+	db.Save(&task)
+
+	return c.JSON(task)
+
+}
