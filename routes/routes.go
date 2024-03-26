@@ -6,5 +6,17 @@ import (
 )
 
 func SetupRoutes(app *fiber.App) {
-	app.Get("/tasks", handlers.GetTasks)
+	// Grupo principal de la API
+	api := app.Group("/api")
+
+	// Subgrupo para la versión 1 de la API
+	v1 := api.Group("/v1")
+
+	// Rutas específicas de la versión 1 de la API
+
+	// http://localhost:3000/api/v1/tasks
+	v1.Get("/tasks", handlers.GetTasks)
+
+	// http://localhost:3000/api/v1/task
+	v1.Post("/task", handlers.CreateTask)
 }
