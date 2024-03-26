@@ -24,3 +24,11 @@ func CreateTask(c *fiber.Ctx) error {
 	db.Create(&task)
 	return c.JSON(task)
 }
+
+func GetTask(c *fiber.Ctx) error {
+	id := c.Params("id")
+	db := database.DB
+	var task models.Task
+	db.Find(&task, id)
+	return c.JSON(task)
+}
