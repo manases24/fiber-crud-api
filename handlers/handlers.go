@@ -12,3 +12,15 @@ func GetTasks(c *fiber.Ctx) error {
 	db.Find(&tasks)
 	return c.JSON(tasks)
 }
+
+func CreateTask(c *fiber.Ctx) error {
+	db := database.DB
+	task := new(models.Task)
+
+	if err := c.BodyParser(task); err != nil {
+		return c.Status(400).JSON(err)
+	}
+
+	db.Create(&task)
+	return c.JSON(task)
+}
