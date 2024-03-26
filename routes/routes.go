@@ -25,4 +25,7 @@ func TaskRoutes(app *fiber.App) {
 
 	// http://localhost:3000/api/v1/task/5
 	v1.Put("/task/:id", handlers.EditTask)
+
+	// http://localhost:3000/api/v1/task/5
+	v1.Delete("/task/:id", handlers.DeleteTask)
 }

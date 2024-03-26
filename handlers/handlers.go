@@ -54,3 +54,16 @@ func EditTask(c *fiber.Ctx) error {
 	return c.JSON(task)
 
 }
+
+func DeleteTask(c *fiber.Ctx) error {
+	id := c.Params("id")
+	db := database.DB
+	var task models.Task
+
+	if err := db.First(&task, id).Error; err != nil {
+		return c.Status(404).JSON(err)
+	}
+
+	db.Delete(&task)
+	return c.JSON(fiber.Map{"status": "success", "message": "Task deleted", "id": task.ID})
+}
