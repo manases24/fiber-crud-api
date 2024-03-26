@@ -20,7 +20,7 @@ func main() {
 		// AllowCredentials: true,
 	}))
 
-	routes.SetupRoutes(app)
+	routes.TaskRoutes(app)
 
 	log.Fatal(app.Listen(":3000"))
 }

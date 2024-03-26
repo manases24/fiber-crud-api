@@ -5,7 +5,7 @@ import (
 	"github.com/mnsh5/fiber-crud-api/handlers"
 )
 
-func SetupRoutes(app *fiber.App) {
+func TaskRoutes(app *fiber.App) {
 	// Grupo principal de la API
 	api := app.Group("/api")
 
